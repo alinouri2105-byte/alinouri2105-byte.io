@@ -22,6 +22,15 @@ section {
     text-align: center;
       }
 
+ .about-me {
+   background-color: #f9f9f9;
+   padding-top: 10px;
+   padding-bottom: 20px;
+   border-radius: 50px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   font-size: large;
+     }
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -223,8 +232,8 @@ margin-top: 30px;
 }
 
 h1{
-        color: blue;
-    }
+        color: rgb(255, 0, 0);
+            }
 p {
        font-family: 'Times New Roman', Times, serif;
        font-size:medium;
@@ -245,4 +254,33 @@ h2 {font-size: 14px;}
 html {
     scroll-behavior: smooth;
 }         
-   
+@media (max-width: 600px) {
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 17px;
+  }
+
+  .contact-btn {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  .skill span {
+    font-size: 16px;
+  }
+
+  .project-card {
+    padding: 18px;
+  }
+}
