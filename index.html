@@ -1,188 +1,394 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title> علی نوری |  طرح سایت با نگاه روانشناسانه</title>
-<meta name="description" content="رزومه و نمونه‌کارهای علی نوری، طراح وب و علاقه‌مند به برنامه‌نویسی.">
-<meta name="keywords" content="Ali Nouri, web designer, frontend developer, HTML, CSS, JavaScript">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>علی نوری | طرح سایت با نگاه روانشناسانه</title>
+  <meta name="description" content="رزومه و نمونه‌کارهای علی نوری، طراح وب و علاقه‌مند به برنامه‌نویسی.">
+  <meta name="keywords" content="Ali Nouri, web designer, frontend developer, HTML, CSS, JavaScript">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet"> 
+  <style>
+    /* استایل‌های اضطراری برای اطمینان از نمایش صحیح زیرمنو در موبایل */
+    @media (max-width: 768px) {
+      .sub-menu {
+        position: static !important;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        background: #2c3137;
+        width: 100%;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        display: block;
+      }
+      
+      .sub-menu.active {
+        max-height: 400px;
+        display: block;
+      }
+      
+      .has-submenu > a::after {
+        content: '▼';
+        font-size: 12px;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+        color: rgba(255,255,255,0.7);
+      }
+      
+      .has-submenu.active > a::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+      
+      .menu.active {
+        max-height: 600px;
+        overflow-y: auto;
+      }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- هدر -->
   <header>
-    <h1>اولین سایتی که ساختم </h1>
-     </header>
-     <div id="wrapper">
-      <nav>
-        <ul class="menu">
-          <li class="home current"><a href="#"><span>خانه</span></a></li>
-          <li><a href="#about"><span>درباره من</span></a></li>
-          <li><a href="#skills"><span>مهارت ها</span></a>
-            <ul class="sub-menu">
-              <li><a href="#">HTML</a></li>
-              <li><a href="#">CSS</a></li>
-              <li><a href="#">JAVA</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact"><span>تماس با من</span></a></li>
-          <li><a href="#fav"><span>علاقمندی </span></a></li>
-          <li><a href="#projects"><span>پروژه</span></a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>اولین سایتی که ساختم</h1>
+  </header>
+
+  <!-- منو -->
+  <div id="wrapper">
+    <nav>
+      <button class="menu-toggle" aria-label="منوی اصلی">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="menu">
+        <li class="home current"><a href="#"><span>خانه</span></a></li>
+        <li><a href="#about"><span>درباره من</span></a></li>
+        <li class="has-submenu">
+          <a href="#skills"><span>مهارت‌ها</span></a>
+          <ul class="sub-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+          </ul>
+        </li>
+        <li><a href="#projects"><span>پروژه‌ها</span></a></li>
+        <li><a href="#fav"><span>علاقه‌مندی‌ها</span></a></li>
+        <li><a href="#contact"><span>تماس با من</span></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- درباره من -->
   <section class="fade-in" id="about">
     <h2>درباره من</h2>
     <p>سلام! من علی نوری هستم، طراح وب سایتی که روانشناسی خونده!</p>
-    <P>سایت هایی میسازم که با مخاطب ارتباط برقرار میکنن، چون پایه شون رو روی درک رفتار انسان گذاشتم و با ترکیب خلاقیت و پشتکار  کار جلو میبرم
-          </P>
-          <p>بیا برای پروژه ات یه سایت هوشمند و اثرگذار بسازیم</p>
-          <div class="about-me">
-            <h2>ویژگی کار من</h2>
-            <li>طراحی تمیز و مدرن</li>
-            <li>تحویل به موقع</li>
-            <li>ارتباط سریع و پشتیبانی بعد از تحویل</li>
-          </div>
-      
+    <p>
+      سایت‌هایی می‌سازم که با مخاطب ارتباط برقرار می‌کنن، چون پایه‌شون رو روی درک رفتار انسان گذاشتم و با ترکیب خلاقیت و پشتکار کار جلو می‌برم.
+    </p>
+    <p>بیا برای پروژه‌ات یه سایت هوشمند و اثرگذار بسازیم.</p>
+
+    <div class="about-me">
+      <h2>ویژگی‌های کار من</h2>
+      <ul>
+        <li>طراحی تمیز و مدرن</li>
+        <li>تحویل به‌موقع</li>
+        <li>ارتباط سریع و پشتیبانی بعد از تحویل</li>
+      </ul>
+    </div>
+
     <a href="mailto:ali@gmail.com" class="contact-btn">تماس با من</a>
   </section>
 
+  <!-- مهارت‌ها -->
   <section class="skills fade-in" id="skills">
     <h2>مهارت‌ها</h2>
 
     <div class="skill">
       <span>HTML</span>
       <div class="bar">
-        <div class="fill html"></div>
+        <div class="fill html" data-percent="90"></div>
       </div>
     </div>
 
     <div class="skill">
       <span>CSS</span>
       <div class="bar">
-        <div class="fill css"></div>
+        <div class="fill css" data-percent="85"></div>
       </div>
     </div>
 
     <div class="skill">
       <span>JavaScript</span>
       <div class="bar">
-        <div class="fill js"></div>
+        <div class="fill js" data-percent="70"></div>
       </div>
     </div>
+
     <div class="skill">
-      <span>phyton</span>
+      <span>Python</span>
       <div class="bar">
-        <div class="fill phyton"></div>
+        <div class="fill python" data-percent="60"></div>
       </div>
     </div>
   </section>
 
-  <section class="fade-in" id="contact">
-    <h2>تماس با من</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="نام شما" required>
-      <input type="email" placeholder="ایمیل شما" required>
-      <textarea placeholder="پیام شما" rows="4" required></textarea>
-      <button type="submit" class="contact-btn">ارسال پیام</button>
-    </form>
-  </section>
-  
-
+  <!-- علاقه‌مندی‌ها -->
   <section class="fade-in" id="fav">
-    <h2>علاقمندی‌ها</h2>
-          <div class="contact-btn">سفر</div>
-      <div class="contact-btn">زن</div>
-      <div class="contact-btn">بچه</div>
-      <div class="contact-btn">ماشین</div>
-        </section>
-<section class="fede-in" id="projects">
-  <h2>پروژه ها</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3> سایت شخصی</h3>
-      <p>طراحی سایت شخصی با html, css , javadcript</p>
-      <a href="#" class="contact-btn">مشاهده</a>
+    <h2>علاقه‌مندی‌ها</h2>
+    <div class="interests">
+      <span class="interest-tag">سفر</span>
+      <span class="interest-tag">خانواده</span>
+      <span class="interest-tag">کودک</span>
+      <span class="interest-tag">ماشین</span>
+    </div>
+  </section>
+
+  <!-- پروژه‌ها -->
+  <section class="fade-in" id="projects">
+    <h2>پروژه‌ها</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>سایت شخصی</h3>
+        <p>طراحی سایت شخصی با HTML، CSS و JavaScript</p>
+        <a href="#" class="contact-btn">مشاهده</a>
       </div>
-  <div class="project-card">
+
+      <div class="project-card">
         <h3>فرم تماس</h3>
         <p>پیاده‌سازی فرم تماس با اعتبارسنجی و افکت‌های UI</p>
         <a href="#" class="contact-btn">مشاهده</a>
-    </div>
-  <div class="project-card">
+      </div>
+
+      <div class="project-card">
         <h3>منوی همبرگری</h3>
         <p>طراحی منوی موبایل ریسپانسیو با JavaScript</p>
         <a href="#" class="contact-btn">مشاهده</a>
       </div>
+
       <div class="project-card">
         <h3>نگارش مقاله</h3>
-        <p>نگارش مقاله و پایان نامه، چاپ کتاب از پایان نامه و پروپزال</p>
+        <p>نگارش مقاله، پایان‌نامه، چاپ کتاب و پروپوزال</p>
         <a href="#" class="contact-btn">مشاهده</a>
       </div>
+
       <div class="project-card">
-        <h3>نگارش مقاله</h3>
-        <p>نگارش مقاله و پایان نامه، چاپ کتاب از پایان نامه و پروپزال</p>
+        <h3>چاپ مقاله</h3>
+        <p>نگارش مقاله، پایان‌نامه، چاپ کتاب و پروپوزال</p>
         <a href="#" class="contact-btn">مشاهده</a>
       </div>
+
       <div class="project-card">
-        <h3>نگارش مقاله</h3>
-        <p>نگارش مقاله و پایان نامه، چاپ کتاب از پایان نامه و پروپزال</p>
+        <h3>ویرایش مقاله</h3>
+        <p>نگارش مقاله، پایان‌نامه، چاپ کتاب و پروپوزال</p>
         <a href="#" class="contact-btn">مشاهده</a>
       </div>
     </div>
-</section>
+  </section>
 
+  <!-- تماس -->
+  <section class="fade-in" id="contact">
+    <h2>تماس با من</h2>
+    <form class="contact-form">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="نام شما" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="ایمیل شما" required>
+      </div>
+      <div class="form-group">
+        <textarea id="message" placeholder="پیام شما" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="contact-btn">ارسال پیام</button>
+    </form>
+  </section>
 
+  <!-- فوتر -->
   <footer>
-    <a href="#about" class="contact-btn">درباره من</a>
-    <a href="#skills" class="contact-btn">مهارت‌ها</a>
-    <a href="#contact" class="contact-btn">تماس با من</a>
-    <div class="footer-link">
-      <a href="#" class="contact-btn">اینستاگرام</a>
-      <a href="#" class="contact-btn">لینکدین</a>
-      <a href="https://github.com/alinouri2105-byte" target="_blank" class="contact-btn">گیت‌هاب</a>
-      <p>همه حقوق محفوظ است. علی © 2026</p>
+    <div class="footer-links">
+      <a href="#about" class="contact-btn">درباره من</a>
+      <a href="#skills" class="contact-btn">مهارت‌ها</a>
+      <a href="#contact" class="contact-btn">تماس با من</a>
     </div>
+
+    <div class="social-links">
+      <a href="#" class="contact-btn" aria-label="اینستاگرام">اینستاگرام</a>
+      <a href="#" class="contact-btn" aria-label="لینکدین">لینکدین</a>
+      <a href="https://github.com/alinouri2105-byte" target="_blank" class="contact-btn" aria-label="گیت‌هاب">گیت‌هاب</a>
+    </div>
+    
+    <p class="copyright">همه حقوق محفوظ است. علی © 2026</p>
   </footer>
+
+  <!-- اسکریپت‌ها - یکپارچه و بهینه شده -->
   <script>
-    // وقتی صفحه کامل لود شد، نوارهای مهارت به اندازه مشخص پر می‌شوند
-    window.onload = () => {
-      document.querySelector('.fill.html').style.width = '90%';
-      document.querySelector('.fill.css').style.width = '85%';
-      document.querySelector('.fill.js').style.width = '70%';
-      document.querySelector('.fill.phyton').style.width = '60%';
-    };
-  
-    // انتخاب تمام بخش‌هایی که باید با اسکرول ظاهر شوند
-    const sections = document.querySelectorAll('.fade-in');
-  
-    // هنگام اسکرول صفحه، بررسی می‌کنیم هر بخش وارد دید کاربر شده یا نه
-    window.addEventListener('scroll', () => {
-      sections.forEach(sec => {
-        // فاصله بخش تا بالای صفحه
-        const top = sec.getBoundingClientRect().top;
-  
-        // اگر بخش وارد محدوده دید شد، افکت نمایش اجرا می‌شود
-        if (top < window.innerHeight - 100) {
-          sec.classList.add('show');
+    (function() {
+      'use strict';
+
+      // انتظار برای بارگذاری کامل DOM
+      document.addEventListener('DOMContentLoaded', function() {
+        
+        // ========== منوی همبرگری و زیرمنو ==========
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        
+        // باز و بسته کردن منوی اصلی
+        if (toggle && menu) {
+          toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggle.classList.toggle('active');
+            menu.classList.toggle('active');
+          });
         }
-      });
-    });
-  
-    // انتخاب فرم تماس
-    const form = document.querySelector('.contact-form');
-  
-    // وقتی فرم ارسال شد
-    form.addEventListener('submit', function(e) {
-      // جلوگیری از رفرش شدن صفحه
-      e.preventDefault();
-  
-      // نمایش پیام موفقیت برای کاربر
-      alert('پیام شما با موفقیت ارسال شد 😎✉️');
-  
-      // پاک کردن فیلدهای فرم بعد از ارسال
-      form.reset();
-    });
+
+        // مدیریت زیرمنوها - هم در موبایل و هم دسکتاپ
+        function initSubmenus() {
+          const menuItems = document.querySelectorAll('.menu > li');
+          const isMobile = window.innerWidth <= 768;
+          
+          menuItems.forEach(item => {
+            const link = item.querySelector('a');
+            const subMenu = item.querySelector('.sub-menu');
+            
+            // حذف event listenerهای قبلی (جلوگیری از تکرار)
+            if (link) {
+              link.removeEventListener('click', handleSubmenuClick);
+              link.addEventListener('click', handleSubmenuClick);
+            }
+            
+            function handleSubmenuClick(e) {
+              if (subMenu) {
+                if (isMobile) {
+                  e.preventDefault();
+                  // بستن سایر زیرمنوها
+                  menuItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                      const otherSubMenu = otherItem.querySelector('.sub-menu');
+                      if (otherSubMenu) {
+                        otherSubMenu.classList.remove('active');
+                      }
+                      otherItem.classList.remove('active');
+                    }
+                  });
+                  // باز و بسته کردن زیرمنو جاری
+                  subMenu.classList.toggle('active');
+                  item.classList.toggle('active');
+                }
+              }
+            }
+          });
+        }
+
+        // بستن منو با کلیک خارج از آن
+        function closeMenuOnClickOutside(e) {
+          if (menu && menu.classList.contains('active')) {
+            if (!e.target.closest('nav')) {
+              menu.classList.remove('active');
+              if (toggle) toggle.classList.remove('active');
+            }
+          }
+        }
+        document.addEventListener('click', closeMenuOnClickOutside);
+
+        // ========== نوارهای مهارت ==========
+        function fillSkillBars() {
+          document.querySelectorAll('.fill').forEach(el => {
+            const percent = el.getAttribute('data-percent');
+            if (percent) {
+              el.style.width = percent + '%';
+            }
+          });
+        }
+
+        // ========== افکت ظاهر شدن با اسکرول ==========
+        const sections = document.querySelectorAll('.fade-in');
+        
+        function checkFadeIn() {
+          sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const top = rect.top;
+            const bottom = rect.bottom;
+            
+            // بررسی می‌کنیم که المان در viewport باشد
+            if (top < window.innerHeight - 50 && bottom > 0) {
+              section.classList.add('show');
+            }
+          });
+        }
+
+        // ========== فرم تماس ==========
+        function initContactForm() {
+          const form = document.querySelector('.contact-form');
+          if (form) {
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              
+              const name = document.getElementById('name');
+              const email = document.getElementById('email');
+              const message = document.getElementById('message');
+              
+              if (name && email && message) {
+                if (name.value.trim() && email.value.trim() && message.value.trim()) {
+                  // اعتبارسنجی ایمیل ساده
+                  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  if (!emailPattern.test(email.value.trim())) {
+                    alert('❌ لطفاً یک ایمیل معتبر وارد کنید.');
+                    return;
+                  }
+                  
+                  alert('✅ پیام شما با موفقیت ارسال شد!');
+                  form.reset();
+                } else {
+                  alert('❌ لطفاً تمام فیلدها را پر کنید.');
+                }
+              }
+            });
+          }
+        }
+
+        // ========== مدیریت رویدادهای پنجره ==========
+        
+        // اجرای اولیه
+        initSubmenus();
+        fillSkillBars();
+        checkFadeIn();
+        initContactForm();
+
+        // رویداد اسکرول
+        window.addEventListener('scroll', function() {
+          requestAnimationFrame(checkFadeIn);
+        });
+
+        // رویداد تغییر اندازه صفحه
+        window.addEventListener('resize', function() {
+          requestAnimationFrame(function() {
+            initSubmenus(); // دوباره مقدار isMobile را بررسی می‌کند
+            
+            // در دسکتاپ، زیرمنوها را ریست کن
+            if (window.innerWidth > 768) {
+              document.querySelectorAll('.sub-menu.active, .has-submenu.active').forEach(el => {
+                el.classList.remove('active');
+              });
+            }
+          });
+        });
+
+        // بارگذاری مجدد نوارهای مهارت در صورت لزوم
+        window.addEventListener('load', function() {
+          fillSkillBars();
+          checkFadeIn();
+        });
+
+      }); // پایان DOMContentLoaded
+
+    })(); // پایان IIFE
   </script>
-   
+
 </body>
 </html>
