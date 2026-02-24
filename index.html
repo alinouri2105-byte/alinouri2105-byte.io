@@ -68,9 +68,9 @@
 
   <!-- هدر -->    
     <header class="header">
-      <div class="container">
-        <button id="theme-toggle">🌙</button>
-          <div class="logo">
+            <div class="container">
+              <button id="theme-toggle">🌙</button>
+       <div class="logo">
               <a href="#">‌<span class="logo-highlight">اولین </span>سایت من</a>
           </div>
           <!-- دکمه همبرگری برای موبایل -->
@@ -96,8 +96,8 @@
                       </a>
                       <ul class="dropdown-menu">
                           <li><a href="#skills"><i class="fab fa-html5"></i> HTML</a></li>
-                          <li><a href="#"><i class="fab fa-css3-alt"></i> CSS</a></li>
-                          <li><a href="#"><i class="fab fa-js"></i> JavaScript</a></li>
+                          <li><a href="#skills"><i class="fab fa-css3-alt"></i> CSS</a></li>
+                          <li><a href="#skills"><i class="fab fa-js"></i> JavaScript</a></li>
                       </ul>
                   </li>
                   <!-- درباره من -->
@@ -435,142 +435,113 @@ faders.forEach(fader => {
     })(); // پایان IIFE
 
     
-        /**
-         * منوی آبشاری ریسپانسیو
-         * شامل: منوی همبرگری، باز و بسته شدن زیرمنو در موبایل،
-         * و جلوگیری از رفتار پیش‌فرض لینک‌ها جهت نمایش dropdown
-         */
+    /**
+     * منوی آبشاری ریسپانسیو
+     * شامل: منوی همبرگری، باز و بسته شدن زیرمنو در موبایل
+     * ویرایش: رفع مشکل لینک‌ها در موبایل
+     */
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // ----- المان‌های اصلی -----
-            const hamburger = document.getElementById('hamburger');
-            const nav = document.getElementById('nav');
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-            
-            // ----- ۱. کنترل منوی همبرگری در موبایل -----
-            if (hamburger) {
-                hamburger.addEventListener('click', function(e) {
-                    e.stopPropagation(); // جلوگیری از بسته شدن ناخواسته
-                    nav.classList.toggle('active');
-                    
-                    // انیمیشن همبرگری به ضربدر (اختیاری)
-                    hamburger.classList.toggle('is-active');
-                });
-            }
-
-            // ----- ۲. مدیریت زیرمنوها (dropdown) در موبایل -----
-            // هدف: با کلیک روی "مهارت‌ها" زیرمنو باز/بسته شود و لینک اصلی هدایت نکند.
-            
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
-                    // فقط در عرض موبایل (max-width: 768px) رفتار ویژه داشته باشیم
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault(); // جلوگیری از هدایت لینک
-                        e.stopPropagation();
-                        
-                        // پیدا کردن والد dropdown (li)
-                        const parentLi = this.closest('.dropdown');
-                        if (parentLi) {
-                            // بستن سایر زیرمنوها (اختیاری: فقط یکی باز باشد)
-                            const allDropdowns = document.querySelectorAll('.dropdown');
-                            allDropdowns.forEach(drop => {
-                                if (drop !== parentLi) {
-                                    drop.classList.remove('active');
-                                }
-                            });
-                            
-                            // باز/بسته کردن منوی جاری
-                            parentLi.classList.toggle('active');
-                        }
-                    }
-                });
+    document.addEventListener('DOMContentLoaded', function() {
+        // ----- المان‌های اصلی -----
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        // ----- ۱. کنترل منوی همبرگری در موبایل -----
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nav.classList.toggle('active');
+                hamburger.classList.toggle('is-active');
             });
+        }
 
-            // ----- ۳. بستن منوی موبایل با کلیک روی لینک‌های اصلی (غیر از dropdown) -----
-            const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768) {
-                        // می‌توانید لینک‌ها واقعی شوند. اما برای دمو اجازه هدایت نمی‌دهیم.
-                        e.preventDefault();
-                        // بستن کل منوی ناوبری
-                        nav.classList.remove('active');
-                        if (hamburger) {
-                            hamburger.classList.remove('is-active');
-                        }
-                    }
-                });
-            });
-
-            // ----- ۴. بستن منو هنگام کلیک بیرون از آن (موبایل) -----
-            document.addEventListener('click', function(event) {
+        // ----- ۲. مدیریت زیرمنوها (dropdown) در موبایل -----
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                // فقط در عرض موبایل (max-width: 768px) رفتار ویژه داشته باشیم
                 if (window.innerWidth <= 768) {
-                    const isClickInsideNav = nav.contains(event.target);
-                    const isClickOnHamburger = hamburger.contains(event.target);
+                    e.preventDefault(); // جلوگیری از هدایت لینک فقط برای دکمه‌های دارای زیرمنو
+                    e.stopPropagation();
                     
-                    if (!isClickInsideNav && !isClickOnHamburger && nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        hamburger.classList.remove('is-active');
+                    // پیدا کردن والد dropdown (li)
+                    const parentLi = this.closest('.dropdown');
+                    if (parentLi) {
+                        // بستن سایر زیرمنوها
+                        const allDropdowns = document.querySelectorAll('.dropdown');
+                        allDropdowns.forEach(drop => {
+                            if (drop !== parentLi) {
+                                drop.classList.remove('active');
+                            }
+                        });
                         
-                        // همچنین بستن همه زیرمنوهای باز
-                        const openDropdowns = document.querySelectorAll('.dropdown.active');
-                        openDropdowns.forEach(drop => drop.classList.remove('active'));
+                        // باز/بسته کردن منوی جاری
+                        parentLi.classList.toggle('active');
                     }
                 }
             });
+        });
 
-            // ----- ۵. ریسپانسیو: وقتی صفحه از موبایل به دسکتاپ بزرگتر می‌شود، وضعیت منو ریست شود -----
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    // حذف کلاس active از منو و زیرمنوها
+        // ----- ۳. بستن منوی موبایل با کلیک روی لینک‌های اصلی (حفظ عملکرد لینک) -----
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    // لینک‌های اصلی کار کنند (حذف e.preventDefault())
+                    // فقط منو را می‌بندیم
+                    nav.classList.remove('active');
+                    if (hamburger) {
+                        hamburger.classList.remove('is-active');
+                    }
+                    
+                    // بستن همه زیرمنوهای باز
+                    const openDropdowns = document.querySelectorAll('.dropdown.active');
+                    openDropdowns.forEach(drop => drop.classList.remove('active'));
+                    
+                    // توجه: لینک به صورت عادی کار خواهد کرد
+                }
+            });
+        });
+
+        // ----- ۴. بستن منو هنگام کلیک بیرون از آن (موبایل) -----
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) {
+                const isClickInsideNav = nav.contains(event.target);
+                const isClickOnHamburger = hamburger.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnHamburger && nav.classList.contains('active')) {
                     nav.classList.remove('active');
                     hamburger.classList.remove('is-active');
                     
-                    const activeDropdowns = document.querySelectorAll('.dropdown.active');
-                    activeDropdowns.forEach(drop => drop.classList.remove('active'));
+                    // بستن همه زیرمنوهای باز
+                    const openDropdowns = document.querySelectorAll('.dropdown.active');
+                    openDropdowns.forEach(drop => drop.classList.remove('active'));
+                }
+            }
+        });
+
+        // ----- ۵. ریسپانسیو: وقتی صفحه از موبایل به دسکتاپ بزرگتر می‌شود -----
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                // حذف کلاس active از منو و زیرمنوها
+                nav.classList.remove('active');
+                hamburger.classList.remove('is-active');
+                
+                const activeDropdowns = document.querySelectorAll('.dropdown.active');
+                activeDropdowns.forEach(drop => drop.classList.remove('active'));
+            }
+        });
+
+        // ----- ۶. جلوگیری از رفتار پیش‌فرض لینک‌ها فقط در دسکتاپ برای دمو -----
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                // در دسکتاپ هاور کفایت می‌کند، اما اگر کاربر کلیک کرد، مانع هدایت شویم
+                if (window.innerWidth > 768) {
+                    e.preventDefault(); // فقط برای دمو
                 }
             });
-
-            // ----- ۶. جلوگیری از رفتار پیش‌فرض لینک‌ها در دسکتاپ (اختیاری) -----
-            // در دسکتاپ با هاور باز می‌شود، اما کلیک روی لینک "مهارت‌ها" نباید صفحه را عوض کند (برای دمو)
-            // فقط برای لینک مهارت‌ها
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
-                    // در دسکتاپ هاور کفایت می‌کند، اما اگر کاربر کلیک کرد، مانع هدایت شویم
-                    if (window.innerWidth > 768) {
-                        e.preventDefault(); // هدایت نشود (چون صفحه‌ای وجود ندارد)
-                    }
-                });
-            });
-            
-            // تذکر: در پروژه واقعی می‌توانید لینک‌ها را به صفحات واقعی متصل کنید.
         });
-        document.addEventListener('DOMContentLoaded', () => {
-
-const toggleBtn = document.getElementById('theme-toggle');
-
-if (!toggleBtn) return; // اگه دکمه نبود، کرش نکن
-
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark');
-  toggleBtn.textContent = '☀️';
-}
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-
-  if (document.body.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-    toggleBtn.textContent = '☀️';
-  } else {
-    localStorage.setItem('theme', 'light');
-    toggleBtn.textContent = '🌙';
-  }
-});
-
-});
-
-       
+    });     
 
     
   </script>
